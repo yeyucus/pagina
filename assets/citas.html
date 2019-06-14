@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+<script Language="JavaScript"> <!--
+function valida_envia()
+{
+	//el formulario se envia usando el método submit() activándolo desde aquí alert("Muchas gracias por enviar el formulario"); document.fvalida.submit();
+if (document.fvalida.nombre.value.length==0) {
+alert("Tiene que escribir su nombre"); document.fvalida.nombre.focus(); //ubica el cursor en la caja nombre return 0; //no avanza a commit
+}
+
+
+
+
+
+
+//Ocupacion check box
+
+var s = document.fvalida.correo.value;
+var filtro = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/; if (!filtro.test(s)) {
+alert('Introduzca un email válido'); document.fvalida.correo.focus();
+return 0; }
+
+edad = document.fvalida.edad.value; 
+edad = validarEntero(edad);
+document.fvalida.edad.value=edad;
+ if (edad==""){
+alert("Tiene que introducir un número entero en su edad.") 
+document.fvalida.edad.focus();
+return 0;
+}else{
+if (edad<18){
+	alert("Debe ser mayor de 18 años para registrarse.")
+document.fvalida.edad.focus();
+return 0;
+}}
+var t = document.fvalida.telefono.value; 
+var er_tlfono = /^([0-9\s\+\-])+$/; //comprueba campo teléfono de formulario //usa el método test de expresión regular
+if(!er_tlfono.test(t)) {
+alert('Campo TELEFONO no válido.') 
+return 0; //no submit
+}
+
+function validarEntero(valor){
+
+valor = parseInt(valor)
+
+if (isNaN(valor)) {
+return "";
+}else{
+ return valor;
+}
+
+}
+
+
+
+} 
+</script>
+
+
+
+
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <title>Citas!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+  <body>
+    <body data-spy="scroll" data-target="#navbar" data-offset=57>
+      
+      <nav id="header" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+      
+          <a class="navbar-brand" href="#"> 
+            <img src="images/logo.jpg" alt=" logo" width="100" height="100">
+            Óptica RayMor
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="../inicio.html" >Inicio </a>
+                
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="#speakers" href="sol.html">Lentes de sol </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="vista.html">Lentes de vista </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="#place-time">Citas </a>
+              </li>
+              
+             
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="col text-center text-uppercase">
+              <small> Citas </small>
+              <h2>Al momento</h2>
+            </div>
+<br><br><br><br>
+
+
+
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Edad</th>
+      <th scope="col">Fecha</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Marco Botton</td>
+      <td>28</td>
+      <td>12/06/19</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Maria Maclachian</td>
+      <td>22</td>
+      <td>13/06/19</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>valeria Liberty</td>
+      <td>15</td>
+      <td>14/06/19</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="col text-center text-uppercase">
+           
+            
+<fieldset>
+<legend>Datos personales para agendar cita</legend>
+
+</fieldset>
+
+</div>
+
+
+<div class="modal" id="modalconfirmacion" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+             <div class="modal-content">
+              <div class="modal-header">
+              <h5 class="modal-title">Confirmacion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+                 </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <div class="input-group mb-3">
+                        <div class="input-group-text" id="basic-addon1">Cita enviada</div>
+                      </div>
+                      
+                  </div>
+                </div>
+              </div>
+              </form>
+              <div class="alert alert-warning" role="alert">
+                Recibiras un correo de confirmacion sí esta disponible la cita
+              </div>
+            </div>
+                </form>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                 
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <form name="fvalida" action="http://www.google.com" method="get"> <table>
+<tr>
+<td>Nombre y apellidos: </td>
+<td><input type="text" name="nombre" size="30" maxlength="100"></td> </tr>
+<tr>
+	</tr>
+<tr>
+
+
+
+
+
+<tr>
+<td>Correo: </td>
+<td><input type="text" name="correo" size="30" maxlength="100"></td>
+</tr>
+<tr>
+<td>Edad: </td>
+<td><input type="text" name="edad" size="3" maxlength="2"></td>
+</tr>
+<tr>
+<td>Telefono: </td>
+<td><input type="text" name="telefono" size="15" maxlength="20"></td>
+</tr>
+<tr>
+
+
+<td for="passwd">Introduzca la contraseña</td>
+<td><input type="password" id="passwd" size="30" maxlength="100"></td> </tr>
+<tr>
+	</tr>
+<tr>
+
+
+
+
+
+
+
+<td colspan="2" align="center"><input type="button" class="btn-danger" href="#"  value="Enviar" data-toggle="modal" data-target="#modalconfirmacion" onclick="valida_envia()"></td>
+</table> </form>
+
+
+       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+  </body>
+</html>   
